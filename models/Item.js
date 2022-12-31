@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Schema;
 
 const itemSchema = new mongoose.Schema({
@@ -26,6 +26,11 @@ const itemSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  categoryId: {
+    type: ObjectId,
+    ref: "Category",
+  },
+
   imageId: [
     {
       type: ObjectId,

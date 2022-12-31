@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+const { ObjectId } = mongoose.Schema;
 
 const activitySchema = new mongoose.Schema({
   name: {
@@ -16,6 +17,12 @@ const activitySchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  itemId: [
+    {
+      type: ObjectId,
+      ref: "Item",
+    },
+  ],
 });
 
 module.exports = mongoose.model("Activity", activitySchema);
