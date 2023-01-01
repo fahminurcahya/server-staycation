@@ -7,12 +7,11 @@ const itemSchema = new mongoose.Schema({
     required: true,
   },
   price: {
-    type: String,
+    type: Number,
     required: true,
   },
   country: {
     type: String,
-    required: true,
     default: "Indonesia",
   },
   city: {
@@ -21,16 +20,24 @@ const itemSchema = new mongoose.Schema({
   },
   isPopular: {
     type: Boolean,
+    default: false,
   },
   description: {
     type: String,
     required: true,
   },
+  unit: {
+    type: String,
+    default: "night",
+  },
+  sumBooking: {
+    type: Number,
+    default: 0,
+  },
   categoryId: {
     type: ObjectId,
     ref: "Category",
   },
-
   imageId: [
     {
       type: ObjectId,

@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Schema;
 
 const activitySchema = new mongoose.Schema({
@@ -7,22 +7,20 @@ const activitySchema = new mongoose.Schema({
     required: true,
   },
   type: {
-    type: Number,
+    type: String,
+    required: true,
+  },
+  imageUrl: {
+    type: String,
     required: true,
   },
   isPopular: {
     type: Boolean,
   },
-  imgUrl: {
-    type: String,
-    required: true,
+  itemId: {
+    type: ObjectId,
+    ref: "Item",
   },
-  itemId: [
-    {
-      type: ObjectId,
-      ref: "Item",
-    },
-  ],
 });
 
 module.exports = mongoose.model("Activity", activitySchema);
