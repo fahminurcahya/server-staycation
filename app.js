@@ -6,6 +6,7 @@ var logger = require("morgan");
 const methodeOverride = require("method-override");
 const session = require("express-session");
 const flash = require("connect-flash");
+const cors = require("cors");
 
 // mongoose
 const mongoose = require("mongoose");
@@ -33,7 +34,7 @@ app.use(
     secret: "keyboard cat",
     resave: false,
     saveUninitialized: true,
-    cookie: { maxAge: 60000 },
+    cookie: {},
   })
 );
 app.use(flash());
@@ -47,6 +48,7 @@ app.use(
   express.static(path.join(__dirname, "node_modules/startbootstrap-sb-admin-2"))
 );
 
+app.use(cors());
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 // admin

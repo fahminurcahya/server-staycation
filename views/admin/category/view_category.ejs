@@ -1,4 +1,3 @@
-
 <%- include('../../partials/header.ejs')  %>
 <!-- Page Wrapper -->
 <div id="wrapper">
@@ -13,7 +12,7 @@
       <!-- Begin Page Content -->
       <div class="container-fluid">
         <%- include('../../partials/message.ejs')  %>
-     
+
         <!-- Page Heading -->
         <h1 class="h3 mb-4 text-gray-800">Category</h1>
         <%- include('table_category.ejs')  %>
@@ -33,7 +32,8 @@
 </a>
 
 <!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -52,15 +52,27 @@
 </div>
 <%- include('add_modal.ejs')  %>
 <%- include('edit_modal.ejs')  %>
+<%- include('delete_modal.ejs')  %>
+
 <%- include('../../partials/script.ejs')  %>
 <script>
-  $("#dataTable").on('click', '.button-update', function(){
+  $("#dataTable").on('click', '.button-update', function () {
     let id = $(this).data('id')
     let name = $(this).data('name')
     $("#modal-edit").modal()
     $('.id').val(id);
     $('.name').val(name)
   })
+
+  $("#dataTable").on('click', '.button-delete', function () {
+    let id = $(this).data('id')
+    let name = $(this).data('name')
+    $("#modal-delete").modal()
+    const myForm = document.getElementById("formDelete");
+    myForm.action = `/admin/category/${id}?_method=DELETE`
+    $('#nama').text(name)
+  })
 </script>
 </body>
+
 </html>
